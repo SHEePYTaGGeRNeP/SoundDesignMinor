@@ -2,13 +2,15 @@
 
 namespace Assets
 {
+    using System.Collections.Generic;
+
     public class Spectrum : MonoBehaviour
     {
         public GameObject prefab;
-        public int numberOfObjects = 20;
-        public float radius = 5f;
-        public GameObject[] cubes;
-        public int multiplyValue = 250;
+        public int numberOfObjects = 50;
+        public float radius = 10f;
+        public List<GameObject> cubes = new List<GameObject>();
+        public int multiplyValue = 5000;
 
         private void Start()
         {
@@ -17,9 +19,8 @@ namespace Assets
             {
                 float angle = i * Mathf.PI * 2 / this.numberOfObjects;
                 Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * this.radius;
-                Instantiate(this.prefab, pos, Quaternion.identity, this.transform);
+                this.cubes.Add(Instantiate(this.prefab, pos, Quaternion.identity, this.transform));
             }
-            this.cubes = GameObject.FindGameObjectsWithTag("Cubes");
         }
 
         private void Update()

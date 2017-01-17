@@ -26,8 +26,6 @@ namespace Assets
 
         [SerializeField]
         private float gain = 0.15f;
-        [SerializeField]
-        private float volume = 0.1f;
 
         private void Awake()
         {

@@ -28,20 +28,19 @@ namespace Assets
 
         private void Update()
         {
-            this.Sample.SetCurrentFrequency(this.CurrentTime);
+            if (this.Sample.ShouldPlay(this.CurrentTime))
+                this.Sample.SetCurrentFrequency(this.CurrentTime);
             if (this._audioSource == null)
-                this._audioSource = this.GetComponent<AudioSource>();            
+                this._audioSource = this.GetComponent<AudioSource>();
         }
 
         private void OnAudioFilterRead(float[] data, int channels)
         {
-            if (this.CurrentTime < this.Sample.startTime || this.Sample.IsDone(this.CurrentTime))
+            if (this.Sample == null) return;
+            if (!this.Sample.ShouldPlay(this.CurrentTime) || this.Sample.IsDone(this.CurrentTime))
             {
-                //this.audioSourceEnabled = false;
                 return;
             }
-            //if (this.audioSourceEnabled == false)
-            //    this.audioSourceEnabled = true;
             this.increment = this.Sample.currentFreq * 2.0 * Mathf.PI / sampling_freq;
             for (int i = 0; i < data.Length; i += channels)
             {

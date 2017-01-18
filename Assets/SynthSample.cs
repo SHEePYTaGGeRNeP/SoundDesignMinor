@@ -2,6 +2,8 @@
 
 namespace Assets
 {
+    using System.Collections.Generic;
+
     using UnityEngine;
 
     [Serializable]
@@ -9,16 +11,29 @@ namespace Assets
     {
         public float startTime;
         public float duration;
+        public enum StartMode { Time, AfterPrevious, WithPrevious }
+        public StartMode startMode;
         public enum SampleMode { Normal, FromTo }
-        public SampleMode mode;
-        public int currentFreq;
+        public SampleMode sampleMode;
         public int startFreq;
         public int endFreq;
         public int freqStep;
+
+        [Header("Debug")]
+        public int currentFreq;
+        [SerializeField]
+        private bool _waiting = true;
         public bool done;
 
+        private bool _sentStart;
+        private bool _sentDone;
         private bool? forwards = null;
         private bool _firstPlayed;
+
+        [HideInInspector]
+        public List<SynthSample> waitingForThisToFinish = new List<SynthSample>();
+        [HideInInspector]
+        public List<SynthSample> waitingForThisToStart = new List<SynthSample>();
 
         public void SetCurrentFrequency(float currentTime)
         {
@@ -28,7 +43,13 @@ namespace Assets
                 this.currentFreq = this.startFreq;
                 return;
             }
-            switch (this.mode)
+            if (!this._sentStart)
+            {
+                this._sentStart = true;
+                for (int i = 0; i < this.waitingForThisToStart.Count; i++)
+                    this.waitingForThisToStart[i].StopWaiting(currentTime);
+            }
+            switch (this.sampleMode)
             {
                 case SampleMode.Normal:
                     this.currentFreq = this.startFreq;
@@ -54,11 +75,15 @@ namespace Assets
         {
             this._firstPlayed = false;
             this.done = false;
+            this._sentDone = false;
+            this._sentStart = false;
+            this._waiting = true;
             this.currentFreq = this.startFreq;
         }
         public bool IsDone(float currentTime)
         {
-            switch (this.mode)
+            if (this._waiting && this.startMode != StartMode.Time) return false;
+            switch (this.sampleMode)
             {
                 case SampleMode.Normal:
                     this.done = currentTime > this.startTime + this.duration;
@@ -69,12 +94,26 @@ namespace Assets
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            if (!this.done) return this.done;
+            if (!this._sentDone)
+            {
+                this._sentDone = true;
+                for (int i = 0; i < this.waitingForThisToFinish.Count; i++)
+                    this.waitingForThisToFinish[i].StopWaiting(currentTime);
+            }
             return this.done;
+        }
+
+        public void StopWaiting(float time)
+        {
+            this.startTime = time;
+            this._waiting = false;
         }
 
         public bool ShouldPlay(float currentTime)
         {
-            switch (this.mode)
+            if (this.startMode != StartMode.Time && this._waiting) return false;
+            switch (this.sampleMode)
             {
                 case SampleMode.Normal:
                     return currentTime > this.startTime;

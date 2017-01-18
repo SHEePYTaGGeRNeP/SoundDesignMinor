@@ -4,7 +4,7 @@ namespace Assets
 {
     using System.Collections.Generic;
     using System.Linq;
-    
+
     public class SynthClip : MonoBehaviour
     {
         [SerializeField]
@@ -41,7 +41,28 @@ namespace Assets
             if (this._initialised) return;
             this.CreateSamplePlayers();
             this.gameObject.SetActive(false);
+            this.Setup();
             this._initialised = true;
+        }
+
+        public void Setup()
+        {
+            for (int i =0 ; i < this._synthSamplePlayers.Count; i++)
+            {
+                switch (this._synthSamplePlayers[i].Sample.startMode)
+                {
+                    case SynthSample.StartMode.Time:
+                        break;
+                    case SynthSample.StartMode.AfterPrevious:
+                        this._synthSamplePlayers[i - 1].Sample.waitingForThisToFinish.Add(this._synthSamplePlayers[i].Sample);
+                        break;
+                    case SynthSample.StartMode.WithPrevious:
+                        this._synthSamplePlayers[i - 1].Sample.waitingForThisToStart.Add(this._synthSamplePlayers[i].Sample);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
 
         private void CreateSamplePlayers()
@@ -91,7 +112,6 @@ namespace Assets
                 this._isPlaying = false;
                 this.gameObject.SetActive(false);
             }
-
         }
     }
 }

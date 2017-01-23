@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Assets.Oscillator" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAASAAAgAAACAAACAAAAAAAACAAQAEAAACAAA=</HashCode>
+      <FileName>Assets\Oscillator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Oscillator1Freq" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAACAAQAACAAAAAAAACAgAAAAAAABAQAEAAAAAEA=</HashCode>
+      <FileName>Assets\Oscillator1Freq.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.Spectrum">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAADCAAAAEAAAAAAAIAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Spectrum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assets.SynthClip">
+    <Position X="3.75" Y="6.25" Width="2.75" />
+    <AssociationLine Name="_playersToRemove" Type="Assets.SynthSamplePlayer">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.003" Y="1.123" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_synthPlayersToPlay" Type="Assets.SynthSamplePlayer">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.041" Y="0.817" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_synthSamplePlayers" Type="Assets.SynthSamplePlayer">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.117" Y="0.492" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAASAQAAACAAAggAAAAAYAAAAAigAAAgAAAAEE=</HashCode>
+      <FileName>Assets\SynthClip.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_playersToRemove" />
+      <Field Name="_synthPlayersToPlay" />
+      <Field Name="_synthSamplePlayers" />
+      <Field Name="Samples" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Assets.SynthClipPlayer">
+    <Position X="0.5" Y="7.25" Width="2" />
+    <AssociationLine Name="_clips" Type="Assets.SynthClip" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.688" Y="7.25" />
+        <Point X="1.688" Y="6.75" />
+        <Point X="3.75" Y="6.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAgACAAAACAEA=</HashCode>
+      <FileName>Assets\SynthClipPlayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_clips" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Assets.SynthSample">
+    <Position X="8.5" Y="1.25" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Assets.SynthSample.StartMode">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\SynthSample.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Assets.SynthSample.SampleMode">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\SynthSample.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <AssociationLine Name="waitingForThisToFinish" Type="Assets.SynthSample">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.11" Y="0.385" Height="0.182" Width="2.785" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="waitingForThisToStart" Type="Assets.SynthSample">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.289" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAACKAQAAABFFAAAJgQAAAAAAAAKAhAIAAAAAAIEA=</HashCode>
+      <FileName>Assets\SynthSample.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="waitingForThisToFinish" />
+      <Field Name="waitingForThisToStart" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Assets.SynthSamplePlayer">
+    <Position X="4" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAQAAAAAAAAAAECBAAAAAAAAAAQAEgAAACAQ=</HashCode>
+      <FileName>Assets\SynthSamplePlayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Sample" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

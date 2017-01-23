@@ -10,12 +10,12 @@ namespace Assets
     public class SynthSample
     {
         public float startTime;
-        public float duration;
         public enum StartMode { Time, AfterPrevious, WithPrevious }
         public StartMode startMode;
+        public int startFreq;
         public enum SampleMode { Normal, FromTo }
         public SampleMode sampleMode;
-        public int startFreq;
+        public float duration;
         public int endFreq;
         public int freqStep;
 

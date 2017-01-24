@@ -9,7 +9,7 @@ namespace Assets
     {
         [SerializeField]
         private bool _useUnityTime = false;
-        public SynthSample[] Samples;
+        public List<SynthSample> Samples;
 
         public SynthSampleMono[] MonoSamples;
 

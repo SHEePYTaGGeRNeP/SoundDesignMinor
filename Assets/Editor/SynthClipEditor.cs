@@ -71,15 +71,15 @@ namespace Assets.Editor
                 EditorGUI.indentLevel += -1;
             }
         }
-        public static void Show(SerializedProperty list,SynthClip clip)
+        public static void Show(SerializedProperty list ,SynthClip clip)
         {
             EditorGUILayout.PropertyField(list);
             EditorGUI.indentLevel += 1;
             if (list.isExpanded)
             {
-                EditorGUILayout.IntField("Size", clip.Samples.Length);
-                SynthSample[] samples = clip.Samples;
-                for (int i = 0; i < clip.Samples.Length; i++)
+                EditorGUILayout.PropertyField(list.FindPropertyRelative("Array.size"));
+                List<SynthSample> samples = clip.Samples;
+                for (int i = 0; i < list.arraySize; i++)
                 {
                     EditorGUILayout.BeginVertical();
                     if (samples[i] == null)
@@ -114,6 +114,9 @@ namespace Assets.Editor
                 }
                 EditorGUI.indentLevel += -1;
             }
+            if (GUILayout.Button("Add Sample"))
+                clip.Samples.Add(new SynthSample());
+
         }
     }
 }

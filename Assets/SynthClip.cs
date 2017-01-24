@@ -11,6 +11,8 @@ namespace Assets
         private bool _useUnityTime = false;
         public SynthSample[] Samples;
 
+        public SynthSampleMono[] MonoSamples;
+
         // we use DateTime so it still works when paused.
         private float startTimeUnity;
         private DateTime startTime;

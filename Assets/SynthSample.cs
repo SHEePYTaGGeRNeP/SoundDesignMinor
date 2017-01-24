@@ -9,20 +9,19 @@ namespace Assets
     [Serializable]
     public class SynthSample
     {
-        public float startTime;
         public enum StartMode { Time, AfterPrevious, WithPrevious }
         public StartMode startMode;
+        public float startTime;
         public int startFreq;
-        public enum SampleMode { Normal, FromTo }
         public SampleMode sampleMode;
+        public enum SampleMode { Normal, FromTo }
         public float duration;
         public int endFreq;
         public int freqStep;
 
         [Header("Debug")]
-        public int currentFreq;
-        [SerializeField]
-        private bool _waiting = true;
+        public int currentFreq;        
+        public bool waiting = true;
         public bool done;
 
         private bool _sentStart;
@@ -77,12 +76,12 @@ namespace Assets
             this.done = false;
             this._sentDone = false;
             this._sentStart = false;
-            this._waiting = true;
+            this.waiting = true;
             this.currentFreq = this.startFreq;
         }
         public bool IsDone(float currentTime)
         {
-            if (this._waiting && this.startMode != StartMode.Time) return false;
+            if (this.waiting && this.startMode != StartMode.Time) return false;
             switch (this.sampleMode)
             {
                 case SampleMode.Normal:
@@ -107,12 +106,12 @@ namespace Assets
         public void StopWaiting(float time)
         {
             this.startTime = time;
-            this._waiting = false;
+            this.waiting = false;
         }
 
         public bool ShouldPlay(float currentTime)
         {
-            if (this.startMode != StartMode.Time && this._waiting) return false;
+            if (this.startMode != StartMode.Time && this.waiting) return false;
             switch (this.sampleMode)
             {
                 case SampleMode.Normal:

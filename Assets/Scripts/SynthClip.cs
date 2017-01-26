@@ -1,9 +1,10 @@
-﻿using System;
-using UnityEngine;
-namespace Assets
+﻿namespace Assets.Scripts
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+
+    using UnityEngine;
 
     public class SynthClip : MonoBehaviour
     {
@@ -56,9 +57,8 @@ namespace Assets
 
         private void CreateSamplePlayers()
         {
-            IEnumerable<SynthSample> samples = this.Samples.OrderBy(x => x.startTime);
             int count = 1;
-            foreach (SynthSample ss in samples)
+            foreach (SynthSample ss in this.Samples)
             {
                 SynthSamplePlayer player = new GameObject("sample" + count++).AddComponent<SynthSamplePlayer>();
                 player.transform.SetParent(this.transform);

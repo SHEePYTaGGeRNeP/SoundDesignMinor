@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-
-namespace Assets
+﻿namespace Assets.Scripts
 {
+    using UnityEngine;
+
     public class Oscillator : MonoBehaviour
     {
 

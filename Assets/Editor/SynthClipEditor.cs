@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace Assets.Editor
 {
+    using Assets.Scripts;
+
     [CustomEditor(typeof(SynthClip))]
     class SynthClipEditor : UnityEditor.Editor
     {
@@ -32,6 +34,7 @@ namespace Assets.Editor
             {
                 EditorGUILayout.PropertyField(list.FindPropertyRelative("Array.size"));
                 List<SynthSample> samples = clip.Samples;
+                if (samples == null) return;
                 for (int i = 0; i < list.arraySize; i++)
                 {
                     EditorGUILayout.BeginVertical();
@@ -56,9 +59,9 @@ namespace Assets.Editor
                     {
                         samples[i].duration = EditorGUILayout.FloatField("Duration", samples[i].duration);
                     }
-                    samples[i].repeatTime = EditorGUILayout.IntField("Repeat Time", samples[i].repeatTime);
-                    if (samples[i].repeatTime > 1)
-                        samples[i].reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].reverseRepeat);
+                    //samples[i].nrOfRepeats = EditorGUILayout.IntField("Repeat Time", samples[i].nrOfRepeats);
+                    //if (samples[i].nrOfRepeats > 1)
+                    //    samples[i].reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].reverseRepeat);
 
                     EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
                     EditorGUILayout.IntField("Current Frequency", samples[i].currentFreq);
@@ -73,9 +76,10 @@ namespace Assets.Editor
                 }
                 EditorGUI.indentLevel += -1;
             }
-            if (GUILayout.Button("Add Sample"))
-                clip.Samples.Add(new SynthSample());
-
+            if (!GUILayout.Button("Add Sample")) return;
+            if (clip.Samples == null)
+                clip.Samples = new List<SynthSample>();
+            clip.Samples.Add(new SynthSample());
         }
     }
 }

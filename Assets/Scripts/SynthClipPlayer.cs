@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-namespace Assets
+﻿namespace Assets.Scripts
 {
+    using UnityEngine;
+
     class SynthClipPlayer : MonoBehaviour
     {
         [Header("Debug info")]

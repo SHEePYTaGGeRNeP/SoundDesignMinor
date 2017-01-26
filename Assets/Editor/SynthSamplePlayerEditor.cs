@@ -2,6 +2,8 @@
 
 namespace Assets.Editor
 {
+    using Assets.Scripts;
+
     [CustomEditor(typeof(SynthSamplePlayer))]
     public class SynthSamplePlayerEditor : UnityEditor.Editor
     {
@@ -29,9 +31,9 @@ namespace Assets.Editor
             {
                 player.Sample.duration = EditorGUILayout.FloatField("Duration", player.Sample.duration);
             }
-            player.Sample.repeatTime = EditorGUILayout.IntField("Repeat Time", player.Sample.repeatTime);
-            if (player.Sample.repeatTime > 1)
-                player.Sample.reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", player.Sample.reverseRepeat);
+            //player.Sample.nrOfRepeats = EditorGUILayout.IntField("Repeat Time", player.Sample.nrOfRepeats);
+            //if (player.Sample.nrOfRepeats > 1)
+            //    player.Sample.reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", player.Sample.reverseRepeat);
 
             EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
             EditorGUILayout.IntField("Current Frequency", player.Sample.currentFreq);

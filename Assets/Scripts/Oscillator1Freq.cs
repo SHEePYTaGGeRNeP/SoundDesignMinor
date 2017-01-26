@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-
-namespace Assets
+﻿namespace Assets.Scripts
 {
-    using System.Security.AccessControl;
+    using UnityEngine;
 
     public class Oscillator1Freq : MonoBehaviour
     {

@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Assets
+﻿namespace Assets.Scripts
 {
+    using System;
     using System.Collections.Generic;
 
     using UnityEngine;
@@ -15,13 +14,13 @@ namespace Assets
         public float startTime = 0;
         public int startFreq = 600;
         public SampleMode sampleMode;
-        public enum SampleMode { Normal, FromTo }
+        public enum SampleMode { Normal, FromTo}
         public float duration = 1;
         public int endFreq = 1000;
         public int freqStep = 10;
 
-        public int repeatTime = 1;
-        public bool reverseRepeat = true;
+        //public int nrOfRepeats = 1;
+        //public bool reverseRepeat = true;
 
         [Header("Debug")]
         public int currentFreq;
@@ -32,6 +31,8 @@ namespace Assets
         private bool _sentDone;
         private bool? forwards = null;
         private bool _firstPlayed;
+
+//        private int _repeatNr = 0;
 
         public SynthSamplePlayer SamplePlayer;
         [HideInInspector]
@@ -82,6 +83,7 @@ namespace Assets
             this._sentDone = false;
             this._sentStart = false;
             this.waiting = true;
+            //this._repeatNr = 0;
             this.currentFreq = this.startFreq;
         }
         public bool IsDone(float currentTime)

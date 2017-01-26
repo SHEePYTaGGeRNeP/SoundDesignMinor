@@ -1,27 +1,28 @@
-﻿using UnityEngine;
-namespace Assets
+﻿namespace Assets.Scripts
 {
+    using UnityEngine;
+
     [RequireComponent(typeof(AudioSource))]
     public class SynthSamplePlayer : MonoBehaviour
     {
-        public enum DataMode { Sinus, Sawtooth, Block, Noise }
+        public enum DataMode { Sinus, Sawtooth, Block, Noise, Silent }
         public DataMode dataMode;
         public SynthSample Sample;
         public float CurrentTime;
-        private System.Random random = new System.Random();
+        private readonly System.Random random = new System.Random();
 
         public const double sampling_freq = 40000;
 
         private double increment;
         private double phase;
         private const float gain = 0.05f;
-        private float randomData;
+        private float _randomData;
 
         private void OnEnable()
         {
             if (this.Sample != null)
                 this.Sample.Reset();
-            phase = 0;
+            this.phase = 0;
         }
 
         private void Update()
@@ -39,13 +40,13 @@ namespace Assets
             }
             // update increment in case frequency has changed
             this.increment = this.Sample.currentFreq * 2.0 * Mathf.PI / sampling_freq;
-            if (dataMode == DataMode.Noise)
-                randomData = (float)(gain * (double)(random.Next(-1000, 1000) / 1000));
+            if (this.dataMode == DataMode.Noise)
+                this._randomData = (gain * (this.random.Next(-1000, 1000) / 1000f));
             for (int i = 0; i < data.Length; i += channels)
             {
                 this.phase += this.increment;
                 // this is where we copy audio data to make them “available” to Unity
-                data[i] = GetData(randomData);
+                data[i] = this.GetData(this._randomData);
                 // if we have multiple speakers, play it on both
                 if (channels == 2)
                     data[i + 1] = data[i];
@@ -55,7 +56,7 @@ namespace Assets
         }
         public float GetData(float randomData)
         {
-            switch (dataMode)
+            switch (this.dataMode)
             {
                 default:
                 case DataMode.Sinus: return (float)(gain * Mathf.Sin((float)this.phase));
@@ -64,6 +65,7 @@ namespace Assets
                     return (float)(gain * Mathf.Lerp(-1, 1, perc));
                 case DataMode.Block: return (float)(gain * (this.phase > Mathf.PI ? 1 : 0));
                 case DataMode.Noise: return randomData;
+                case DataMode.Silent: return 0;
             }
         }
 

@@ -1,11 +1,11 @@
-﻿using System;
+﻿// Needed for Math
 
-using UnityEngine;
-
-// Needed for Math
-
-namespace Assets
+namespace Assets.Scripts
 {
+    using System;
+
+    using UnityEngine;
+
     public class Sinus : MonoBehaviour
     {
         // un-optimized version

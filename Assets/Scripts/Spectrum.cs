@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-
-namespace Assets
+﻿namespace Assets.Scripts
 {
     using System.Collections.Generic;
+
+    using UnityEngine;
 
     public class Spectrum : MonoBehaviour
     {
@@ -27,11 +27,11 @@ namespace Assets
 
         private void Update()
         {
-            AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Hamming);
+            AudioListener.GetSpectrumData(this.spectrum, 0, FFTWindow.Hamming);
             for (int i = 0; i < this.numberOfObjects; i++)
             {
                 Vector3 previousScale = this.cubes[i].transform.localScale;
-                previousScale.y = Mathf.Lerp(previousScale.y, spectrum[i] * this.multiplyValue, Time.deltaTime * 30);
+                previousScale.y = Mathf.Lerp(previousScale.y, this.spectrum[i] * this.multiplyValue, Time.deltaTime * 30);
                 this.cubes[i].transform.localScale = previousScale;
             }
 

@@ -12,16 +12,16 @@ namespace Assets.Editor
     {
         public override void OnInspectorGUI()
         {
-            SynthClip clip = (SynthClip)target;
-            serializedObject.Update();
+            SynthClip clip = (SynthClip)this.target;
+            this.serializedObject.Update();
 
             //EditorGUILayout.PropertyField(serializedObject.FindProperty("Samples"), true);
-            Show(serializedObject.FindProperty("Samples"), clip);
+            Show(this.serializedObject.FindProperty("Samples"), clip);
 
             EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
             EditorGUILayout.FloatField("Current Time", clip.CurrentTime);
 
-            serializedObject.ApplyModifiedProperties();
+            this.serializedObject.ApplyModifiedProperties();
         }
 
         public static void Show(SerializedProperty list, SynthClip clip)
@@ -56,6 +56,9 @@ namespace Assets.Editor
                     {
                         samples[i].duration = EditorGUILayout.FloatField("Duration", samples[i].duration);
                     }
+                    samples[i].repeatTime = EditorGUILayout.IntField("Repeat Time", samples[i].repeatTime);
+                    if (samples[i].repeatTime > 1)
+                        samples[i].reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].reverseRepeat);
 
                     EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
                     EditorGUILayout.IntField("Current Frequency", samples[i].currentFreq);

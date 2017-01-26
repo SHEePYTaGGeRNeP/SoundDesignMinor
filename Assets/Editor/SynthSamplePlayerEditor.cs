@@ -7,7 +7,7 @@ namespace Assets.Editor
     {
         public override void OnInspectorGUI()
         {
-            SynthSamplePlayer player = (SynthSamplePlayer)target;
+            SynthSamplePlayer player = (SynthSamplePlayer)this.target;
             EditorGUILayout.BeginVertical();
             if (player.Sample == null)
                 player.Sample = new SynthSample();
@@ -29,6 +29,9 @@ namespace Assets.Editor
             {
                 player.Sample.duration = EditorGUILayout.FloatField("Duration", player.Sample.duration);
             }
+            player.Sample.repeatTime = EditorGUILayout.IntField("Repeat Time", player.Sample.repeatTime);
+            if (player.Sample.repeatTime > 1)
+                player.Sample.reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", player.Sample.reverseRepeat);
 
             EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
             EditorGUILayout.IntField("Current Frequency", player.Sample.currentFreq);

@@ -5,9 +5,13 @@
     using System.Linq;
 
     using UnityEngine;
+    using UnityEngine.Audio;
 
     public class SynthClip : MonoBehaviour
     {
+        [HideInInspector]
+        public GameObject prefabToSpawn;        
+
         public List<SynthSample> Samples;
 
         // we use DateTime so it still works when paused.
@@ -26,7 +30,7 @@
 
         private bool _isPlaying;
 
-        private void Awake()
+        private void Start()
         {
             if (this._initialised) return;
             this.CreateSamplePlayers();
@@ -60,8 +64,8 @@
             int count = 1;
             foreach (SynthSample ss in this.Samples)
             {
-                SynthSamplePlayer player = new GameObject("sample" + count++).AddComponent<SynthSamplePlayer>();
-                player.transform.SetParent(this.transform);
+                SynthSamplePlayer player = GameObject.Instantiate(this.prefabToSpawn, this.transform).AddComponent<SynthSamplePlayer>();
+                player.gameObject.name = "sample" + count++;
                 player.Sample = ss;
                 player.Sample.SamplePlayer = player;
                 player.dataMode = ss.dataMode;

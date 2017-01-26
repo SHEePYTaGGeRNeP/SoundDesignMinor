@@ -14,10 +14,12 @@
         public float startTime = 0;
         public int startFreq = 600;
         public SampleMode sampleMode;
-        public enum SampleMode { Normal, FromTo}
+        public enum SampleMode { Normal, FromTo }
         public float duration = 1;
         public int endFreq = 1000;
         public int freqStep = 10;
+        public float startGain = 0.05f;
+        public float gainStep = 0;
 
         //public int nrOfRepeats = 1;
         //public bool reverseRepeat = true;
@@ -32,13 +34,25 @@
         private bool? forwards = null;
         private bool _firstPlayed;
 
-//        private int _repeatNr = 0;
+        //private int _repeatNr = 0;
 
         public SynthSamplePlayer SamplePlayer;
         [HideInInspector]
         public List<SynthSample> waitingForThisToFinish = new List<SynthSample>();
         [HideInInspector]
         public List<SynthSample> waitingForThisToStart = new List<SynthSample>();
+
+        public void Reset()
+        {
+            this._firstPlayed = false;
+            this.done = false;
+            this._sentDone = false;
+            this._sentStart = false;
+            this.waiting = true;
+            this.SamplePlayer.gain = this.startGain;
+            //this._repeatNr = 0;
+            this.currentFreq = this.startFreq;
+        }
 
         public void SetCurrentFrequency(float currentTime)
         {
@@ -53,6 +67,14 @@
                 this._sentStart = true;
                 for (int i = 0; i < this.waitingForThisToStart.Count; i++)
                     this.waitingForThisToStart[i].StopWaiting(currentTime);
+            }
+            // if gainStep == 0
+            if (Math.Abs(this.gainStep) > 0.00001)
+            {
+                if (this.gainStep > 0)
+                    this.SamplePlayer.gain = Mathf.Max(0, this.SamplePlayer.gain - this.gainStep);
+                else
+                    this.SamplePlayer.gain += this.gainStep;
             }
             switch (this.sampleMode)
             {
@@ -76,16 +98,6 @@
             }
         }
 
-        public void Reset()
-        {
-            this._firstPlayed = false;
-            this.done = false;
-            this._sentDone = false;
-            this._sentStart = false;
-            this.waiting = true;
-            //this._repeatNr = 0;
-            this.currentFreq = this.startFreq;
-        }
         public bool IsDone(float currentTime)
         {
             if (this.waiting && this.startMode != StartMode.Time) return false;

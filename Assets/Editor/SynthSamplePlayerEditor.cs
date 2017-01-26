@@ -31,12 +31,15 @@ namespace Assets.Editor
             {
                 player.Sample.duration = EditorGUILayout.FloatField("Duration", player.Sample.duration);
             }
+            player.Sample.startGain = EditorGUILayout.FloatField("Start Gain", player.Sample.startGain);
+            player.Sample.gainStep = EditorGUILayout.FloatField("Gain Step", player.Sample.gainStep);
             //player.Sample.nrOfRepeats = EditorGUILayout.IntField("Repeat Time", player.Sample.nrOfRepeats);
             //if (player.Sample.nrOfRepeats > 1)
             //    player.Sample.reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", player.Sample.reverseRepeat);
 
             EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
             EditorGUILayout.IntField("Current Frequency", player.Sample.currentFreq);
+            EditorGUILayout.FloatField("Current Gain", player.gain);
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.Toggle("Waiting", player.Sample.waiting);
             EditorGUILayout.Toggle("Done", player.Sample.done);

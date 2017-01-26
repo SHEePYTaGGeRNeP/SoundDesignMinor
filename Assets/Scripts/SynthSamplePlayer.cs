@@ -1,10 +1,12 @@
 ﻿namespace Assets.Scripts
 {
     using UnityEngine;
+    using UnityEngine.Audio;
 
     [RequireComponent(typeof(AudioSource))]
     public class SynthSamplePlayer : MonoBehaviour
     {
+
         public enum DataMode { Sinus, Sawtooth, Block, Noise, Silent }
         public DataMode dataMode;
         public SynthSample Sample;
@@ -15,7 +17,7 @@
 
         private double increment;
         private double phase;
-        private const float gain = 0.05f;
+        public float gain = 0.05f;
         private float _randomData;
 
         private void OnEnable()

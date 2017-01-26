@@ -59,12 +59,16 @@ namespace Assets.Editor
                     {
                         samples[i].duration = EditorGUILayout.FloatField("Duration", samples[i].duration);
                     }
+                    samples[i].startGain = EditorGUILayout.FloatField("Start Gain", samples[i].startGain);
+                    samples[i].gainStep = EditorGUILayout.FloatField("Gain Step", samples[i].gainStep);
                     //samples[i].nrOfRepeats = EditorGUILayout.IntField("Repeat Time", samples[i].nrOfRepeats);
                     //if (samples[i].nrOfRepeats > 1)
                     //    samples[i].reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].reverseRepeat);
 
                     EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
                     EditorGUILayout.IntField("Current Frequency", samples[i].currentFreq);
+                    if (samples[i].SamplePlayer != null)
+                        EditorGUILayout.FloatField("Current Gain", samples[i].SamplePlayer.gain);
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.Toggle("Waiting", samples[i].waiting);
                     EditorGUILayout.Toggle("Done", samples[i].done);

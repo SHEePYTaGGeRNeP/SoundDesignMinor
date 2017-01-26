@@ -1,9 +1,11 @@
 ﻿namespace Assets.Scripts
 {
     using UnityEngine;
+    using UnityEngine.Audio;
 
     class SynthClipPlayer : MonoBehaviour
     {
+        public GameObject prefabToSpawn;
         [Header("Debug info")]
         [SerializeField]
         private SynthClip[]_clips;
@@ -16,6 +18,8 @@
         private void Awake()
         {
             this._clips = this.GetComponentsInChildren<SynthClip>(true);
+            for (int i = 0; i < this._clips.Length; i++)
+                this._clips[i].prefabToSpawn = this.prefabToSpawn;
         }
 
         private void Update()

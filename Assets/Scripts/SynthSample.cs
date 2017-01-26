@@ -9,6 +9,7 @@ namespace Assets
     [Serializable]
     public class SynthSample
     {
+        public SynthSamplePlayer.DataMode dataMode;
         public enum StartMode { Time, AfterPrevious, WithPrevious }
         public StartMode startMode;
         public float startTime = 0;
@@ -32,6 +33,7 @@ namespace Assets
         private bool? forwards = null;
         private bool _firstPlayed;
 
+        public SynthSamplePlayer SamplePlayer;
         [HideInInspector]
         public List<SynthSample> waitingForThisToFinish = new List<SynthSample>();
         [HideInInspector]

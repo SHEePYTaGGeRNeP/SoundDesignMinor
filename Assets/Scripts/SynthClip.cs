@@ -7,11 +7,7 @@ namespace Assets
 
     public class SynthClip : MonoBehaviour
     {
-        [SerializeField]
-        private bool _useUnityTime = false;
-        public SynthSample[] Samples;
-
-        public SynthSampleMono[] MonoSamples;
+        public List<SynthSample> Samples;
 
         // we use DateTime so it still works when paused.
         private float startTimeUnity;
@@ -21,16 +17,7 @@ namespace Assets
         [Header("debug")]
         [SerializeField]
         private float _currentTime;
-        public float CurrentTime
-        {
-            get
-            {
-                if (this._useUnityTime)
-                    return Time.time - this.startTimeUnity;
-                else
-                    return (float)(DateTime.Now - this.startTime).TotalSeconds;
-            }
-        }
+        public float CurrentTime { get { return (float)(DateTime.Now - this.startTime).TotalSeconds; } }
 
         private readonly List<SynthSamplePlayer> _synthSamplePlayers = new List<SynthSamplePlayer>();
         private readonly List<SynthSamplePlayer> _synthPlayersToPlay = new List<SynthSamplePlayer>();
@@ -49,7 +36,7 @@ namespace Assets
 
         public void Setup()
         {
-            for (int i =0 ; i < this._synthSamplePlayers.Count; i++)
+            for (int i = 0; i < this._synthSamplePlayers.Count; i++)
             {
                 switch (this._synthSamplePlayers[i].Sample.startMode)
                 {
@@ -76,6 +63,8 @@ namespace Assets
                 SynthSamplePlayer player = new GameObject("sample" + count++).AddComponent<SynthSamplePlayer>();
                 player.transform.SetParent(this.transform);
                 player.Sample = ss;
+                player.Sample.SamplePlayer = player;
+                player.dataMode = ss.dataMode;
                 this._synthSamplePlayers.Add(player);
             }
         }

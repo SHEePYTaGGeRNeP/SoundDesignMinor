@@ -43,11 +43,12 @@ namespace Assets
 
         private void OnAudioFilterRead(float[] data, int channels)
         {
+            // update increment in case frequency has changed
             this.increment = this.frequency * 2.0 * Mathf.PI / this.sampling_freq;
             for (int i = 0; i < data.Length; i += channels)
             {
-
                 this.phase += this.increment;
+                // this is where we copy audio data to make them “available” to Unity
                 data[i] = (float)(this.gain * Mathf.Sin((float)this.phase));
                 // if we have multiple speakers, play it on both
                 if (channels == 2)
@@ -56,8 +57,5 @@ namespace Assets
                     this.phase = 0;
             }
         }
-
-
-
     }
 }

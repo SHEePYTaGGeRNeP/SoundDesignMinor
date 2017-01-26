@@ -11,16 +11,19 @@ namespace Assets
     {
         public enum StartMode { Time, AfterPrevious, WithPrevious }
         public StartMode startMode;
-        public float startTime;
-        public int startFreq;
+        public float startTime = 0;
+        public int startFreq = 600;
         public SampleMode sampleMode;
         public enum SampleMode { Normal, FromTo }
-        public float duration;
-        public int endFreq;
-        public int freqStep;
+        public float duration = 1;
+        public int endFreq = 1000;
+        public int freqStep = 10;
+
+        public int repeatTime = 1;
+        public bool reverseRepeat = true;
 
         [Header("Debug")]
-        public int currentFreq;        
+        public int currentFreq;
         public bool waiting = true;
         public bool done;
 

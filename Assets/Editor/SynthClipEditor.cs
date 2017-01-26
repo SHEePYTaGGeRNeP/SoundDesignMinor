@@ -58,6 +58,10 @@ namespace Assets.Editor
                         EditorGUILayout.LabelField("Duration");
                         samples[i].Sample.duration = EditorGUILayout.FloatField(samples[i].Sample.duration);
                     }
+                    EditorGUILayout.LabelField("Repeat Time");
+                    samples[i].Sample.repeatTime = EditorGUILayout.IntField("Repeat Time", samples[i].Sample.repeatTime);
+                    if (samples[i].Sample.repeatTime > 1)
+                        samples[i].Sample.reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].Sample.reverseRepeat);
 
                     EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
                     EditorGUILayout.LabelField("Current Frequency");
@@ -71,7 +75,7 @@ namespace Assets.Editor
                 EditorGUI.indentLevel += -1;
             }
         }
-        public static void Show(SerializedProperty list,SynthClip clip)
+        public static void Show(SerializedProperty list, SynthClip clip)
         {
             EditorGUILayout.PropertyField(list);
             EditorGUI.indentLevel += 1;

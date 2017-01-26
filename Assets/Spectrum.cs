@@ -12,6 +12,8 @@ namespace Assets
         public List<GameObject> cubes = new List<GameObject>();
         public int multiplyValue = 5000;
 
+        float[] spectrum = new float[1024];
+
         private void Start()
         {
             // Instantiates a prefab in a circle
@@ -25,7 +27,6 @@ namespace Assets
 
         private void Update()
         {
-            float[] spectrum = new float[1024];
             AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Hamming);
             for (int i = 0; i < this.numberOfObjects; i++)
             {

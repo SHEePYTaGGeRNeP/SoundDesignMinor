@@ -20,6 +20,7 @@
         public int freqStep = 10;
         public float startGain = 0.05f;
         public float gainStep = 0;
+        public float pitch = 1;
 
         //public int nrOfRepeats = 1;
         //public bool reverseRepeat = true;

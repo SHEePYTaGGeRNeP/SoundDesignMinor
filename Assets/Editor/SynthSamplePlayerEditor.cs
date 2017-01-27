@@ -33,6 +33,7 @@ namespace Assets.Editor
             }
             player.Sample.startGain = EditorGUILayout.FloatField("Start Gain", player.Sample.startGain);
             player.Sample.gainStep = EditorGUILayout.FloatField("Gain Step", player.Sample.gainStep);
+            player.Sample.pitch = EditorGUILayout.FloatField("Pitch", player.Sample.pitch);
             //player.Sample.nrOfRepeats = EditorGUILayout.IntField("Repeat Time", player.Sample.nrOfRepeats);
             //if (player.Sample.nrOfRepeats > 1)
             //    player.Sample.reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", player.Sample.reverseRepeat);

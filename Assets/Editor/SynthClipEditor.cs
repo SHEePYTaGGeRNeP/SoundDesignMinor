@@ -64,7 +64,7 @@ namespace Assets.Editor
                     //samples[i].nrOfRepeats = EditorGUILayout.IntField("Repeat Time", samples[i].nrOfRepeats);
                     //if (samples[i].nrOfRepeats > 1)
                     //    samples[i].reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].reverseRepeat);
-
+                    samples[i].pitch = EditorGUILayout.FloatField("Pitch", samples[i].pitch);
                     EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
                     EditorGUILayout.IntField("Current Frequency", samples[i].currentFreq);
                     if (samples[i].SamplePlayer != null)

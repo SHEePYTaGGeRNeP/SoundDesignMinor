@@ -1,0 +1,352 @@
+mode sawtooth;
+beep 660 100;
+delay 150;
+beep 660 100;
+delay 300;
+beep 660 100;
+delay 300;
+beep 510 100;
+delay 100;
+beep 660 100;
+delay 300;
+beep 770 100;
+delay 550;
+beep 380 100;
+delay 575;
+
+beep 510 100;
+delay 450;
+beep 380 100;
+delay 400;
+beep 320 100;
+delay 500;
+beep 440 100;
+delay 300;
+beep 480 80;
+delay 330;
+beep 450 100;
+delay 150;
+beep 430 100;
+delay 300;
+beep 380 100;
+delay 200;
+beep 660 80;
+delay 200;
+beep 760 50;
+delay 150;
+beep 860 100;
+delay 300;
+beep 700 80;
+delay 150;
+beep 760 50;
+delay 350;
+beep 660 80;
+delay 300;
+beep 520 80;
+delay 150;
+beep 580 80;
+delay 150;
+beep 480 80;
+delay 500;
+
+beep 510 100;
+delay 450;
+beep 380 100;
+delay 400;
+beep 320 100;
+delay 500;
+beep 440 100;
+delay 300;
+beep 480 80;
+delay 330;
+beep 450 100;
+delay 150;
+beep 430 100;
+delay 300;
+beep 380 100;
+delay 200;
+beep 660 80;
+delay 200;
+beep 760 50;
+delay 150;
+beep 860 100;
+delay 300;
+beep 700 80;
+delay 150;
+beep 760 50;
+delay 350;
+beep 660 80;
+delay 300;
+beep 520 80;
+delay 150;
+beep 580 80;
+delay 150;
+beep 480 80;
+delay 500;
+
+beep 500 100;
+delay 300;
+
+beep 760 100;
+delay 100;
+beep 720 100;
+delay 150;
+beep 680 100;
+delay 150;
+beep 620 150;
+delay 300;
+
+beep 650 150;
+delay 300;
+beep 380 100;
+delay 150;
+beep 430 100;
+delay 150;
+
+beep 500 100;
+delay 300;
+beep 430 100;
+delay 150;
+beep 500 100;
+delay 100;
+beep 570 100;
+delay 220;
+
+beep 500 100;
+delay 300;
+
+beep 760 100;
+delay 100;
+beep 720 100;
+delay 150;
+beep 680 100;
+delay 150;
+beep 620 150;
+delay 300;
+
+beep 650 200;
+delay 300;
+
+beep 1020 80;
+delay 300;
+beep 1020 80;
+delay 150;
+beep 1020 80;
+delay 300;
+
+beep 380 100;
+delay 300;
+beep 500 100;
+delay 300;
+
+beep 760 100;
+delay 100;
+beep 720 100;
+delay 150;
+beep 680 100;
+delay 150;
+beep 620 150;
+delay 300;
+
+beep 650 150;
+delay 300;
+beep 380 100;
+delay 150;
+beep 430 100;
+delay 150;
+
+beep 500 100;
+delay 300;
+beep 430 100;
+delay 150;
+beep 500 100;
+delay 100;
+beep 570 100;
+delay 420;
+
+beep 585 100;
+delay 450;
+
+beep 550 100;
+delay 420;
+
+beep 500 100;
+delay 360;
+
+beep 380 100;
+delay 300;
+beep 500 100;
+delay 300;
+beep 500 100;
+delay 150;
+beep 500 100;
+delay 300;
+
+beep 500 100;
+delay 300;
+
+beep 760 100;
+delay 100;
+beep 720 100;
+delay 150;
+beep 680 100;
+delay 150;
+beep 620 150;
+delay 300;
+
+beep 650 150;
+delay 300;
+beep 380 100;
+delay 150;
+beep 430 100;
+delay 150;
+
+beep 500 100;
+delay 300;
+beep 430 100;
+delay 150;
+beep 500 100;
+delay 100;
+beep 570 100;
+delay 220;
+
+beep 500 100;
+delay 300;
+
+beep 760 100;
+delay 100;
+beep 720 100;
+delay 150;
+beep 680 100;
+delay 150;
+beep 620 150;
+delay 300;
+
+beep 650 200;
+delay 300;
+
+beep 1020 80;
+delay 300;
+beep 1020 80;
+delay 150;
+beep 1020 80;
+delay 300;
+
+beep 380 100;
+delay 300;
+beep 500 100;
+delay 300;
+
+beep 760 100;
+delay 100;
+beep 720 100;
+delay 150;
+beep 680 100;
+delay 150;
+beep 620 150;
+delay 300;
+
+beep 650 150;
+delay 300;
+beep 380 100;
+delay 150;
+beep 430 100;
+delay 150;
+
+beep 500 100;
+delay 300;
+beep 430 100;
+delay 150;
+beep 500 100;
+delay 100;
+beep 570 100;
+delay 420;
+
+beep 585 100;
+delay 450;
+
+beep 550 100;
+delay 420;
+
+beep 500 100;
+delay 360;
+
+beep 380 100;
+delay 300;
+beep 500 100;
+delay 300;
+beep 500 100;
+delay 150;
+beep 500 100;
+delay 300;
+
+beep 500 60;
+delay 150;
+beep 500 80;
+delay 300;
+beep 500 60;
+delay 350;
+beep 500 80;
+delay 150;
+beep 580 80;
+delay 350;
+beep 660 80;
+delay 150;
+beep 500 80;
+delay 300;
+beep 430 80;
+delay 150;
+beep 380 80;
+delay 600;
+
+beep 500 60;
+delay 150;
+beep 500 80;
+delay 300;
+beep 500 60;
+delay 350;
+beep 500 80;
+delay 150;
+beep 580 80;
+delay 150;
+beep 660 80;
+delay 550;
+
+beep 870 80;
+delay 325;
+beep 760 80;
+delay 600;
+
+beep 500 60;
+delay 150;
+beep 500 80;
+delay 300;
+beep 500 60;
+delay 350;
+beep 500 80;
+delay 150;
+beep 580 80;
+delay 350;
+beep 660 80;
+delay 150;
+beep 500 80;
+delay 300;
+beep 430 80;
+delay 150;
+beep 380 80;
+delay 600;
+
+beep 660 100;
+delay 150;
+beep 660 100;
+delay 300;
+beep 660 100;
+delay 300;
+beep 510 100;
+delay 100;
+beep 660 100;
+delay 300;
+beep 770 100;
+delay 550;
+beep 380 100;
+delay 575;

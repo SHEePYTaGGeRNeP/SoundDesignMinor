@@ -69,6 +69,7 @@
                 player.Sample = ss;
                 player.Sample.SamplePlayer = player;
                 player.dataMode = ss.dataMode;
+                player.GetComponent<AudioSource>().pitch = ss.pitch;
                 this._synthSamplePlayers.Add(player);
             }
         }

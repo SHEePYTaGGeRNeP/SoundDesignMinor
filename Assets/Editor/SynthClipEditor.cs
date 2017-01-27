@@ -65,6 +65,8 @@ namespace Assets.Editor
                     //if (samples[i].nrOfRepeats > 1)
                     //    samples[i].reverseRepeat = EditorGUILayout.Toggle("Reverse Repeat", samples[i].reverseRepeat);
                     samples[i].pitch = EditorGUILayout.FloatField("Pitch", samples[i].pitch);
+                    if (samples[i].SamplePlayer != null)
+                        samples[i].SamplePlayer.GetComponent<AudioSource>().pitch = samples[i].pitch;
                     EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
                     EditorGUILayout.IntField("Current Frequency", samples[i].currentFreq);
                     if (samples[i].SamplePlayer != null)

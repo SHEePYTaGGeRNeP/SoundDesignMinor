@@ -6,7 +6,6 @@
     [RequireComponent(typeof(AudioSource))]
     public class SynthSamplePlayer : MonoBehaviour
     {
-
         public enum DataMode { Sinus, Sawtooth, Block, Noise, Silent }
         public DataMode dataMode;
         public SynthSample Sample;
@@ -29,7 +28,9 @@
 
         private void Update()
         {
-            if (this.Sample.ShouldPlay(this.CurrentTime))
+            if (this.Sample.done)
+                this.gameObject.SetActive(false);
+            else if (this.Sample.ShouldPlay(this.CurrentTime))
                 this.Sample.SetCurrentFrequency(this.CurrentTime);
         }
 

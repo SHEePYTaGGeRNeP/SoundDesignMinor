@@ -79,6 +79,8 @@
             this.startTimeUnity = Time.time;
             this.startTime = DateTime.Now;
             this.gameObject.SetActive(true);
+            for (int i =0; i < this.transform.childCount; i++)
+                this.transform.GetChild(i).gameObject.SetActive(true);
             this._synthPlayersToPlay.Clear();
             this._synthPlayersToPlay.AddRange(this._synthSamplePlayers);
             this._isPlaying = true;
